@@ -9,7 +9,6 @@ function TaskInput() {
     const tasksAdded=useSelector((state)=>state.task.tasks);
     const [text, setText] = useState("");
     const [filterStatus, setFilterStatus] = useState("");
-    const [tasks,setTasks]=useState([]);
     const [responseText, setResponseText] = useState("");
     const [addStatus, setAddStatus] = useState(false);
     const handleChange=(e)=>{
@@ -23,7 +22,7 @@ function TaskInput() {
         }
     }
     const saveTask=()=>{
-        if(text.trim() !=""){
+        if(text.trim() !==""){
             dispatch(taskAdd({"name":text, "status":"PENDING", "time": moment.now()}))
             console.log(tasksAdded);
             setText("");
@@ -54,12 +53,12 @@ function TaskInput() {
             <option value="ALL"> All</option>
         </select>
     </div>
-    {responseText.trim() !="" && <span className={ addStatus ? "text-green-600": "text-red-600"} >{responseText}</span>}
+    {responseText.trim() !=="" && <span className={ addStatus ? "text-green-600": "text-red-600"} >{responseText}</span>}
 
     <div className='grid grid-flow-row gap-4 mt-2'>
         {tasksAdded?.map((item)=>
         
-        (filterStatus=="" ||  item?.status===filterStatus) && <TaskTiles key={item?.time} taskName={item?.name} taskStatus={item?.status} taskTime={item?.time}/> 
+        (filterStatus==="" ||  item?.status === filterStatus) && <TaskTiles key={item?.time} taskName={item?.name} taskStatus={item?.status} taskTime={item?.time}/> 
     )}
     </div>
     </div>

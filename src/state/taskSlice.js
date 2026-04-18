@@ -13,16 +13,16 @@ const taskSlice= createSlice(
             changeStatus(state,actions){
                 console.log(actions.payload)
                 let taskEdited=state.tasks.filter(item=>item.time ===actions.payload.time);
-                if(taskEdited.length!=0){
+                if(taskEdited.length!==0){
                     let newTask=taskEdited[0];
                     newTask.status=actions.payload.status;
-                    state.tasks=state.tasks.filter(items=>items.time!=actions.payload.time)
+                    state.tasks=state.tasks.filter(items=>items.time!==actions.payload.time)
                     state.tasks=[...state.tasks, newTask];
                 }
                 
             },
             deleteTask(state,actions){
-                state.tasks=state.tasks.filter(items=>items.time!=actions.payload)
+                state.tasks=state.tasks.filter(items=>items.time!==actions.payload)
             }
             
 

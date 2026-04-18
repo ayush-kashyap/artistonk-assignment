@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { changeStatus, deleteTask } from '../state/taskSlice';
-import {moment} from 'moment';
 
 function TaskTiles({taskName,taskStatus,taskTime}) {
     const [newTaskStatus,setNewTaskStatus]=useState(taskStatus);
